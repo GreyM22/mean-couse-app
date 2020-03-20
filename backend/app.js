@@ -22,10 +22,10 @@ app.use((req, res, next) => {
 
 app.use('/api/post', (req, res, next) => {
   const post = req.body;
-  console.log(post);
   res.status(201).json({
     message: " Post added successfully"
   });
+  console.log(post);
 })
 
 app.use('/api/posts',(req, res, next) => {
@@ -43,7 +43,7 @@ app.use('/api/posts',(req, res, next) => {
   ];
   res.status(200).json({
     message: "Posts where fetch from the server",
-    post: post
+    posts: posts
   });
 })
 

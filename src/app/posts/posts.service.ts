@@ -13,10 +13,11 @@ export class PostsService {
 
   constructor( private http: HttpClient) { }
 
-  getPosts(){
+  getPosts() {
     this.http.get<{message: string, posts: Post[]}>('http://localhost:3000/api/posts')
         .subscribe((postsData) =>{
           this.posts = postsData.posts;
+          console.dir(postsData);
           this.postsUpdated.next([...this.posts]);
         });
   }
@@ -25,6 +26,7 @@ export class PostsService {
     return this.postsUpdated.asObservable();
   }
   addPost( title: string, content: string ){
+    console.log("Called addPost from the service!");
     const post: Post = {
       id: null,
       title: title,
